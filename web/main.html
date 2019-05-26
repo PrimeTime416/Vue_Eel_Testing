@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta -->
+    <meta charset="UTF-8" />
+    <title>Vue & Eel Test File</title>
+
+<!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+<!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+    
+    
+<body>
+    <script async type="module">
+        console.log('IN: module: import main.js');
+        import {test as vc} from './script/main.js';
+        var app_1 = new Vue(vc);
+        app_1.$mount("#app");
+    </script>
+    <script>
+        console.log("Calling Python...");
+        console.log(eel);
+        eel.my_python_function(1, 2); // This calls the Python function that was decorated
+        
+        
+        eel.expose(my_javascript_function);
+        function my_javascript_function(a, b) {
+          if (a == b) {
+            console.log(`IN: eel.expose(my_javascript_function): a=${a} and b=${b}`);
+          }
+        }
+        
+    </script>
+    
+    <h1>Hello World!</h1>
+    <p>Vue intergration in to Eel testing</p>
+    <div v-cloak id='app'>{{message}}</div>
+</body>
+</html>
