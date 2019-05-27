@@ -8,6 +8,7 @@
 <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="assets/Vue_logo.png" type="image/png" >
 
 <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -21,8 +22,7 @@
         import {test as vc} from './script/main.js';
         var app_1 = new Vue(vc);
         app_1.$mount("#app");
-    </script>
-    <script>
+        
         console.log("Calling Python...");
         console.log(eel);
         eel.my_python_function(1, 2); // This calls the Python function that was decorated
@@ -33,7 +33,13 @@
           if (a == b) {
             console.log(`IN: eel.expose(my_javascript_function): a=${a} and b=${b}`);
           }
-        }
+        };
+        
+        eel.expose(my_vue_function);
+        function my_vue_function(a, b) {
+            app_1.getResultMethod();
+            return console.log(app_1);
+        };
         
     </script>
     

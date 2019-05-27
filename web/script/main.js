@@ -19,7 +19,9 @@ vc.methods = {
   },
   
   getResultMethod: function(){
+    this.message = 'From Python :)';
     console.log("IN: methods: getResultMethod");
+    
   }
 };
 
