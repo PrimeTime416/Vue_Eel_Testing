@@ -18,9 +18,11 @@ vc.methods = {
     this.title = event.target.value;
   },
   
-  getResultMethod: function(){
-    this.message = 'From Python :)';
-    console.log("IN: methods: getResultMethod");
+  getResultMethod: function(message){
+    this.message = message ||  'From Python :)';
+//     this.message = message;
+    console.log("IN: methods: getResultMethod", message);
+    console.log(message);
     
   }
 };

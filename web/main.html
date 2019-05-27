@@ -41,6 +41,12 @@
             return console.log(app_1);
         };
         
+        eel.expose(app_1X);
+        function app_1X(methodX, dataX) {
+            console.log('IN: app_1X');
+            return app_1[methodX](dataX);
+        };
+        
     </script>
     
     <h1>Hello World!</h1>
