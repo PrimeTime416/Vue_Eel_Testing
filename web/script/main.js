@@ -7,7 +7,8 @@ vc.data = function() {
   return { 
     title: "",
     inputA: 0,
-    message: 'hello from vue and eel'
+    counter: 0,
+    message: 'Vue has succesfully Started!'
   };
 };
 
@@ -18,22 +19,22 @@ vc.methods = {
     this.title = event.target.value;
   },
   
-  getResultMethod: function(message){
-    this.message = message ||  'From Python :)';
-//     this.message = message;
-    console.log("IN: methods: getResultMethod", message);
-    console.log(message);
-    
-  }
+    getResultMethod: function(message){
+//         this.counter = this.counter + 1;
+        this.message = message ||  'From Python :)';
+        console.log("IN: methods: getResultMethod", message);
+    }
 };
 
 vc.computed = {
-  getResultComputed: function(){
-    console.log("IN: computed:getResultComputed");
-  },
+    getResultComputed: function(){
+        eel.my_python_function(this.counter, this.counter + 1); // This calls the Python function that was decorated
+        console.log("IN: computed:getResultComputed");
+        return this.counter + 2;
+    },
 
   getResult4: function(){
-    console.log("IN: computed: getResult4");
+      console.log("IN: computed: getResult4");
   }
 };
 

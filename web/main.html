@@ -11,22 +11,30 @@
     <link rel="icon" href="assets/Vue_logo.png" type="image/png" >
 
 <!-- Scripts -->
+<!-- Load Vue followed by BootstrapVue -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>    
     <script type="text/javascript" src="/eel.js"></script>
+
+<!-- Load required Bootstrap and BootstrapVue CSS -->
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+<!-- Load polyfills to support older browsers -->
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CMutationObserver" crossorigin="anonymous"></script>
+    
 </head>
     
     
 <body>
     <script async type="module">
-        console.log('IN: module: import main.js');
         import {test as vc} from './script/main.js';
         var app_1 = new Vue(vc);
+        var welcomePython = `Python Eel started wtih Object ${eel}`;
         app_1.$mount("#app");
         
-        console.log("Calling Python...");
-        console.log(eel);
-        eel.my_python_function(1, 2); // This calls the Python function that was decorated
-        
+        console.log('IN: module: import main.js');
+        console.log(welcomePython);
         
         eel.expose(my_javascript_function);
         function my_javascript_function(a, b) {
@@ -35,11 +43,11 @@
           }
         };
         
-        eel.expose(my_vue_function);
-        function my_vue_function(a, b) {
-            app_1.getResultMethod();
-            return console.log(app_1);
-        };
+//         eel.expose(my_vue_function);
+//         function my_vue_function(a, b) {
+//             app_1.getResultMethod();
+//             return console.log(app_1);
+//         };
         
         eel.expose(app_1X);
         function app_1X(methodX, dataX) {
@@ -50,7 +58,20 @@
     </script>
     
     <h1>Hello World!</h1>
-    <p>Vue intergration in to Eel testing</p>
-    <div v-cloak id='app'>{{message}}</div>
+    <p>Welcome to my Vue intergration and testing for the Python Eel package:</p>
+    <div v-cloak id='app'>
+        {{message}}
+    <hr>
+    <div>
+      <p><b-button @click='counter += 1'>Button1</b-button>
+      <span>Button1 METHOD +1 to count: {{ counter }}</span><p/>
+      <p><b-button variant="danger" >Button2</b-button>
+      <span>Button2 COMPUTED +2 to count: {{ getResultComputed }}</span><p/>
+      <p><b-button variant="success" @click='counter -= 2'>Button3</b-button>
+      <span>Button3 add -2 to count: {{ counter }}</span><p/>
+      <p><b-button variant="outline-primary" @click='counter -= 1'>Button4</b-button>
+      <span>Button4 add -1 to count: {{ counter }}</span><p/>
+    </div>
+    </div>
 </body>
 </html>
