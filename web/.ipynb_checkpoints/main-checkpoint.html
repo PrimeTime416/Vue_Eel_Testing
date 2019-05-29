@@ -65,12 +65,18 @@
     <div>
       <p><b-button @click='counter += 1'>Button1</b-button>
       <span>Button1 METHOD +1 to count: {{ counter }}</span><p/>
+        
       <p><b-button variant="danger" >Button2</b-button>
       <span>Button2 COMPUTED +2 to count: {{ getResultComputed }}</span><p/>
+        
       <p><b-button variant="success" @click='counter -= 2'>Button3</b-button>
       <span>Button3 add -2 to count: {{ counter }}</span><p/>
+        
       <p><b-button variant="outline-primary" @click='counter -= 1'>Button4</b-button>
       <span>Button4 add -1 to count: {{ counter }}</span><p/>
+        
+      <p><b-button variant="success" @click='pySocket1("test2")'>PySocket1</b-button>
+      <span>PySocket1: {{ counter }}</span><p/>    
     </div>
     </div>
 </body>
