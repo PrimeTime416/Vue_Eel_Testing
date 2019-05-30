@@ -20,9 +20,14 @@ vc.methods = {
   },
   
     getResultMethod: function(message){
-//         this.counter = this.counter + 1;
         this.message = message ||  'From Python :)';
         console.log("IN: methods: getResultMethod", message);
+    },
+    
+    pySocket1: function(dataX){
+        console.log("IN: methods: pySocket1:", dataX);
+        eel.py_socket1(`OUT: pySocket1: ${dataX}`);
+        eel.py_socket1(dataX);
     }
 };
 
