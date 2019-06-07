@@ -14,27 +14,23 @@ def my_python_function(a, b):
         print('test2')
         eel.app_1X('getResultMethod', a)
 
-    def caser_default:
+    def caser_default():
         print('No Dice!')
-        eel.app_1X('getResultMethod', a)
+        eel.app_1X('getResultMethod', "FROM: caser_default")
     
     switcher = {
-        test: test
+        test: test,
         7: test2
     }
-#     if a == 7:
-#     else:
-#     print(a, b)
-   
-caser = switcher.get(a, lambda: caser_default)
-caser()
-    
-    
+
+#     caser = switcher.get(a, lambda: caser_default)
+    caser = switcher.get(a, caser_default)
+    caser()
     
     
 @eel.expose
 def py_socket1(dataX):
-    print(f'IN: py_socket1 DATA: {dataX}')
+#     print(f'IN: py_socket1 DATA: {dataX}')
     if dataX == 'test2':
         print('in dataX')
         test2()
