@@ -4,19 +4,32 @@ import eel
 
 @eel.expose
 def my_python_function(a, b):
-    if a == 7:
+    def test():
+        print('test')
         print('IN: my_python_function: call javascript')
         eel.my_javascript_function(a, b)  # This calls the Javascript function;
         eel.app_1X('getResultMethod', 'From Eel all good')
-    else:
+
+    def test2():
+        print('test2')
         eel.app_1X('getResultMethod', a)
-    print(a, b)
+
+    def caser_default:
+        print('No Dice!')
+        eel.app_1X('getResultMethod', a)
     
-def test():
-    print('test')
+    switcher = {
+        test: test
+        7: test2
+    }
+#     if a == 7:
+#     else:
+#     print(a, b)
+   
+caser = switcher.get(a, lambda: caser_default)
+caser()
     
-def test2():
-    print('test2')
+    
     
     
 @eel.expose
