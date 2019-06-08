@@ -18,9 +18,15 @@ def my_python_function(a, b):
         print('No Dice!')
         eel.app_1X('getResultMethod', "FROM: caser_default")
     
+    def get_xterm(argX):
+        Popen(['xterm', '-e', 'sleep 3s'])
+    
+    
+    
     switcher = {
         test: test,
-        7: test2
+        7: test2,
+        'get_xterm': get_xterm
     }
 
 #     caser = switcher.get(a, lambda: caser_default)
